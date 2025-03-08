@@ -1,0 +1,46 @@
+//check if the game has ended
+bool gameEnd() {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (box[i][j] == ' ') {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// Main function
+int main() {
+    emptyBoard();
+    char player = 'A';
+    int scoreA = 0, scoreB = 0;
+
+    while (!gameEnd()) {
+        printGrid();  //current state of the board
+        
+        moves(player); //get the move from the current player
+        
+        bool completedBox = checkAndMarkBox(player); //to check and mark boxes after each move
+
+        countScores(&scoreA, &scoreB); //count the scores
+
+        //update scores
+        printf("Player A score: %d\n", scoreA);
+        printf("Player B score: %d\n", scoreB);
+
+        // Switch turns between Player A and Player B if no box is completed
+        if (!completedBox) {
+            if (player == 'A') {
+                player = 'B';
+            } else {
+                player = 'A';
+            }
+        }
+    }
+
+    printf("Game Over! Player A score: %d, Player B score: %d\n", scoreA, scoreB);
+    printf("Winner: %s\n", (scoreA > scoreB) ? "Player A" : (scoreB > scoreA) ? "Player B" : "It's a tie!");
+
+    return 0;
+}
