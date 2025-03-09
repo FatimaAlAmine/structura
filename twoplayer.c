@@ -38,23 +38,21 @@ void printGrid() {
     printf("\n");
     
     
-    for (int i = 0; i < ROWS+1; i++) {
+   for (int i = 0; i < ROWS + 1; i++) {
         printf(" %d ", i); // prints each number for rows
         for (int j = 0; j < COLS; j++) {
             printf(". %c ", horizontal[i][j]);
-            }
-            printf(".\n"); // last dot
-            
-           if (i < ROWS ) {
-            printf("    ");
+        }
+        printf(".\n"); // last dot
+       
+        if (i < ROWS) {
+            printf("   ");
             for (int j = 0; j < COLS; j++) {
                 printf("%c %c ", vertical[i][j], box[i][j]);
             }
             printf("%c\n", vertical[i][COLS]);
-        } 
-
         }
-
+    }
 }
 
 void moves(char player)
