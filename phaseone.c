@@ -127,7 +127,17 @@ bool checkAndMarkBox(char player) {
     }
     return completedBox;
 }
-
+//check if the game has ended 
+bool gameEnd() {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (box[i][j] == ' ') {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 
 int main() {
@@ -155,5 +165,9 @@ int main() {
             }
         }
     }
-    return 0;
+    
+    printf("Game Over! Player A score: %d, Player B score: %d\n", scoreA, scoreB);
+    printf("Winner: %s\n", (scoreA > scoreB) ? "Player A" : (scoreB > scoreA) ? "Player B" : "It's a tie!");
+
+return 0;
 }
