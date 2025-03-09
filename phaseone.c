@@ -91,16 +91,69 @@ void moves(char player)
     }
 }
 
-int main() {
-   
-    emptyBoard();
-    char player1 ='A';
-    char player2 = 'B';
-    
-    while(true){
-        printGrid();
-        break;
-    }
 
+// fxn to count the scores for the players and update them
+void countScores(int *scoreA, int *scoreB) {
+    // initialize scores to zero
+    *scoreA = 0;
+    *scoreB = 0;
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+           
+            if (box[i][j] == 'A') { // if square is completed by A
+                (*scoreA)++; //dereference scoreA & increment it
+               
+            } else if (box[i][j] == 'B') { // if square is completed by B
+                (*scoreB)++; // dereference scoreB & increment it
+            }
+        }
+    }
+}
+
+// fxn to check and mark the completed squares
+bool checkAndMarkBox(char player) {
+    bool completedBox = false; //flag for the completed boxes
+   
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            //check if box is completed
+            if (horizontal[i][j] == '-' && horizontal[i + 1][j] == '-' &&
+                vertical[i][j] == '|' && vertical[i][j + 1] == '|' && box[i][j] == ' ') {
+                 // mark the xompleted box with the player's initial (A or B).    
+                box[i][j] = player;
+                completedBox = true;
+            }
+        }
+    }
+    return completedBox;
+}
+
+
+
+int main() {
+    emptyBoard();
+    char player = 'A';
+    int scoreA = 0, scoreB = 0;
+
+    while (!gameEnd()) {
+        printGrid(); //current state of the board
+        moves(player); //get the move from the current player
+        bool completedBox = checkAndMarkBox(player); //to check and mark boxes after each move
+
+        countScores(&scoreA, &scoreB); //count the scores
+
+        //update scores
+        printf("Player A score: %d\n", scoreA);
+        printf("Player B score: %d\n", scoreB);
+
+        // Switch turns between Player A and Player B if no box is completed
+        if (!completedBox) {
+            if (player == 'A') {
+                player = 'B';
+            } else {
+                player = 'A';
+            }
+        }
+    }
     return 0;
 }
