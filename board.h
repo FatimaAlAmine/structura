@@ -1,5 +1,4 @@
-
-board.h #ifndef BOARD_H
+ #ifndef BOARD_H
 #define BOARD_H
 
 #define ROWS 4
