@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <time.h>
-#include "board.h"      
-#include "moves.h"       
-#include "gameLogic.h"   
-#include "botLogic.h" 
-#include "medium.h"
+#include "header.h"
 
 
 int main() {
