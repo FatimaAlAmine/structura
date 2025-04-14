@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include "board.h"
-#include "medium.h"
-#include "botLogic.h"
+#include "header.h"
 
 bool boxHasThreeSides(int i, int j) {
     int count = 0;
