@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include "board.h"
+#include "header.h"
 
 void moves(char player, int *row1, int *col1, int *row2, int *col2) {
     printf("%c's turn. Enter the row and the column of the first dot (e.g., 0 0 0 1): ", player);
