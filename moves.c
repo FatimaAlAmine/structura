@@ -2,7 +2,12 @@
 
 void moves(char player, int *row1, int *col1, int *row2, int *col2) {
     printf("%c's turn. Enter the row and the column of the first dot (e.g., 0 0 0 1): ", player);
-    scanf("%d %d %d %d", row1, col1, row2, col2);
+    if (scanf("%d %d %d %d", row1, col1, row2, col2) != 4) {
+        printf("Invalid input. Please enter four integers.\n");
+        while (getchar() != '\n');
+        moves(player, row1, col1, row2, col2); // Try again
+        return;
+    }
 
     if (*row1 == *row2 && (*col1 + 1 == *col2 || *col2 + 1 == *col1)) {
         int min_col = (*col1 < *col2) ? *col1 : *col2;
