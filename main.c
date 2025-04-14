@@ -10,9 +10,23 @@ int main() {
     
     int row1, col1, row2, col2; //store the last move
     
+    
+char input[100];
+do {
     printf("Choose opponent: (H)uman or (B)ot? ");
-    scanf(" %c", &opponent);
-    bool againstBot = (opponent == 'B' || opponent == 'b'); // Handle lowercase 'b'
+    fgets(input, sizeof(input), stdin); // full line
+
+    // input should be 1 letter followed by a newline
+    if ((input[0] == 'H' || input[0] == 'h' || input[0] == 'B' || input[0] == 'b') && input[1] == '\n') {
+        opponent = input[0]; // check all possible acceptable conditions 
+        break; // one stop checking
+    } else {
+        printf("Invalid input. Please enter only H or B.\n");
+    }
+} while (1); // keep going until we get 1 letter to check
+
+bool againstBot = (opponent == 'B' || opponent == 'b');
+  
     int difficulty = 1; // Default to Easy
 
     if (againstBot) {
