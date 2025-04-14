@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "board.h"
-#include "botLogic.h"
+#include "header.h"
 
 bool isValidMove(int row1, int col1, int row2, int col2) {
     if (row1 == row2) { // Horizontal line
