@@ -1,5 +1,4 @@
-#include "board.h"
-#include <stdbool.h>
+#include "header.h"
 
 // fxn to count the scores for the players and update them
 void countScores(int *scoreA, int *scoreB) {
