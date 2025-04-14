@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include "board.h"
+#include "header.h"
 
 // store horizonatal and vertical lines
  char horizontal [ROWS +1][COLS];
